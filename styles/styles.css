@@ -27,6 +27,18 @@ header {
     text-align: center;
 }
 
+label {
+    display: block;
+    padding-bottom: .2rem;
+}
+input[type="text"], textarea, select {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    padding: .45rem;
+}
+
 legend {
     color:darkgreen;
     font-family: "Comic Sans", Roboto, 'sans-serif';
