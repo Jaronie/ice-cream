@@ -29,20 +29,14 @@ h1{
 
 label {
     display: block;
-    padding-bottom: .2rem;
+    padding-bottom: 1rem;
 }
-input[type="text"], textarea, select {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: .25rem;
-    margin-bottom: 1rem;
-    padding: .45rem;
-}
+
 
 legend {
     color:darkgreen;
     font-family: "Comic Sans", Roboto, 'sans-serif';
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 1rem 1rem;
     text-align: center;
 }
@@ -53,7 +47,13 @@ fieldset{
     padding: 1.25rem;
     margin-bottom: .5rem;
 }
-
+input[type="text"], textarea, select {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    padding: .45rem;
+}
 #submit-button{
     border: none;
     background-color: rgb(89, 177, 82);
@@ -63,6 +63,20 @@ fieldset{
     text-decoration: none;
     color: white;
     padding: 1rem;
+}
+#cone-options label{
+  display: inline-block;
+  margin-right: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+
+}
+#topping-options label{
+  display: inline-block;
+  margin-right: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+
 }
 
 
