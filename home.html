@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ice Cream Order Form</title>
+  <!-- fav icon -->
+  <link rel="icon" href="images/ice-cream-logo.png">
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <!-- background images -->
+  <img src="images/ice-cream.png" alt="Picture of Ice Cream">
+  <img id="ice-2" src="images/ice-cream.png" alt="Picture of Ice Cream">
+  <main>
+
+    <!-- header title -->
+    <header>
+      <h1>
+        Ice Cream Order Form
+      </h1>
+    </header>
+
+    <!-- personal information -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <form id="order-form" action="#" method="get">
+
+        <!-- personal information labels -->
+        <label for="name">Name:</label>
+        <input type="text" id="order-name" name="order-name">
+        <label for="email">Email:</label>
+        <input type="text" id="order-email" name="order-email">
+
+    </fieldset>
+    <!-- order details -->
+    <fieldset>
+      <legend>Order Details</legend>
+
+      <!-- order details -->
+
+      <!-- flavor option -->
+      <label for="flavor-option">Choose your flavor:</label>
+      <select id="flavor" name="flavor">
+        <option value="none">-- Choose a flavor --</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="strawberry">Strawberry</option>
+        <option value="mint">Mint</option>
+      </select>
+
+
+      </select>
+
+      <!-- cone selection -->
+      <label for="cone-type">Choose your cone:</label>
+      <div id="cone-options">
+      <label>
+        <input type="radio" id="cone-waffle" name="cone-option" value="waffle"> Waffle Cone</label>
+      <label>
+        <input type="radio" id="cone-sugar" name="cone-option" value="sugar"> Sugar Cone</label>
+      <label>
+        <input type="radio" id="cone-cup" name="cone-option" value="cup"> Cup</label>
+        </div>
+
+      <!-- topping selection -->
+      <label for="topping">Toppings:</label>
+      <div id="topping-options">
+      <label for="sprinkles">
+        <input type="checkbox" id="sprinkles" name="toppings[]" value="sprinkles">Sprinkles</input></label>
+      <label for="nuts">
+        <input type="checkbox" id="nuts" name="toppings[]" value="nuts">Nuts</input></label>
+      <label for="cherries">
+        <input type="checkbox" id="cherries" name="toppings[]" value="cherries">Cherries</input></label>
+      <label for="whipped-cream">
+        <input type="checkbox" id="whipped-cream" name="toppings[]" value="whipped-cream">Whipped Cream</input></label>
+        </div>
+
+
+      <!-- additional comments -->
+      <label for="comments">Additional Comments:</label>
+      <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+
+    </fieldset>
+
+
+    <!-- submit button -->
+    <button type="submit" id="submit-button">Submit Order</button>
+    </form>
+  </main>
+</body>
+
+</html>
