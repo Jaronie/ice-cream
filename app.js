@@ -13,15 +13,17 @@ const app = express();
 const PORT = 3000;
 
 
+
+ app.use(express.static('public'));
+ 
 // Define a default "route" ('/')
 
 // req: contains information about the incoming request
 
 // res: allows us to send back a response to the client
-
 app.get('/', (req, res) => {
 
-    res.send('Welcome to My Ice Cream Shop!');
+  res.sendFile(`${import.meta.dirname}/views/home.html`);
 
 });
 
