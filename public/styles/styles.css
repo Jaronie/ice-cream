@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: lightblue;
+
+}
+
+#ice-2 {
+    float:right;
+}
+main {
+    width:40%;
+    background-color: white;
+    border-radius: .45rem;
+    padding: 2rem 1rem;
+    margin: auto;
+}
+
+header {
+    font-family: "Comic Sans",Roboto,'sans-serif';
+
+}
+h1{
+    text-align: center;
+}
+
+label {
+    display: block;
+    padding-bottom: 1rem;
+}
+
+
+legend {
+    color:darkgreen;
+    font-family: "Comic Sans", Roboto, 'sans-serif';
+    font-size: 1rem;
+    padding: 1rem 1rem;
+    text-align: center;
+}
+
+fieldset{
+    border:1px solid grey;
+    border-radius: .25rem;
+    padding: 1.25rem;
+    margin-bottom: .5rem;
+}
+input[type="text"], textarea, select {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    padding: .45rem;
+}
+#submit-button{
+    border: none;
+    background-color: rgb(89, 177, 82);
+    border-color:darkgreen;
+    border-radius: .25rem;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+#cone-options label{
+  display: inline-block;
+  margin-right: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+
+}
+#topping-options label{
+  display: inline-block;
+  margin-right: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+
+}
+
+
+
