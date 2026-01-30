@@ -6,15 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ice Cream Order Form</title>
   <!-- fav icon -->
-  <link rel="icon" href="images/ice-cream-logo.png">
+  <link rel="icon" href="/images/ice-cream-logo.png?v=1" type="image/png">
   <!-- stylesheet -->
   <link rel="stylesheet" href="styles/styles.css">
+  <!-- javascript  -->
+    <script src="js/ice-cream.js" defer></script>
 </head>
 
 <body>
-  <!-- background images -->
-  <img src="images/ice-cream.png" alt="Picture of Ice Cream">
-  <img id="ice-2" src="images/ice-cream.png" alt="Picture of Ice Cream">
   <main>
 
     <!-- header title -->
@@ -31,7 +30,9 @@
 
         <!-- personal information labels -->
         <label for="name">Name:</label>
+        <span id="err-name" class="err">Name required!</span>
         <input type="text" id="order-name" name="order-name">
+        <span id="err-email" class="err">Email required!</span>
         <label for="email">Email:</label>
         <input type="text" id="order-email" name="order-email">
 
@@ -43,6 +44,7 @@
       <!-- order details -->
 
       <!-- flavor option -->
+      <span id="err-flavor" class="err">Please choose a flavor!</span>
       <label for="flavor-option">Choose your flavor:</label>
       <select id="flavor" name="flavor">
         <option value="none">-- Choose a flavor --</option>
@@ -56,6 +58,7 @@
       </select>
 
       <!-- cone selection -->
+      <span id="err-cone" class="err">Please choose a cone!</span>
       <label for="cone-type">Choose your cone:</label>
       <div id="cone-options">
       <label>
