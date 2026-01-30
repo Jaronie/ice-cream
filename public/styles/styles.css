@@ -5,12 +5,11 @@
 body {
     margin: 0;
     background-color: lightblue;
+    background-image: url("/images/ice-cream.png");
+    background-repeat: repeat space;
 
 }
 
-#ice-2 {
-    float:right;
-}
 main {
     width:40%;
     background-color: white;
@@ -18,7 +17,10 @@ main {
     padding: 2rem 1rem;
     margin: auto;
 }
-
+.err {
+    color: red;
+    display: none;
+}
 header {
     font-family: "Comic Sans",Roboto,'sans-serif';
 
