@@ -96,8 +96,8 @@ app.post('/submit',(req, res) =>{
     email: req.body['email'],
     flavor: req.body['flavor'],
     cone: req.body['cone'],
-    toppings: req.body.toppings ? req.body.toppings : "none",
-    comment: req.body['comments'],
+    toppings: req.body.topping ? req.body.toppings : "none",
+    comment: req.body['comment'],
     timestamp: new Date()
   };
 
@@ -120,8 +120,8 @@ app.post('/thank-you', async (req, res) => {
     order.toppings = Array.isArray(order.toppings) ? order.toppings.join(", ") : ""; 
 
     // SQL INSERT query with placeholders to prevent SQL injection
-    const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings) 
-                  VALUES (?, ?, ?, ?, ?);`;
+    const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings, comment) 
+                  VALUES (?, ?, ?, ?, ?, ?);`;
 
     // Parameters array must match the order of ? placeholders
 
@@ -133,7 +133,8 @@ app.post('/thank-you', async (req, res) => {
       order.email,
       order.flavor,
       order.cone,
-      order.toppings
+      order.toppings,
+      order.comment
 
     ];
 
@@ -142,7 +143,10 @@ app.post('/thank-you', async (req, res) => {
 
     console.log('Order saved with ID:', result[0].insertId);
 
-    // Render confirmation page with the adoption data
+    // Return toppings to an array for use on confirm page
+    order.toppings = order.toppings.split(", "); 
+
+    // Render confirmation page with the  data
     res.render('confirm', { order });        
 
   } catch (err) {
