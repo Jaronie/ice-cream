@@ -19,19 +19,19 @@
     <div id="inner">
       <h2>Personal Information</h2>
 
-      <h3>Name:</h3> <p><%= submission.name %></p>
+      <h3>Name:</h3> <p><%= order.name %></p>
       <br>
-      <h3>Email:</h3> <p><%= submission.email %></p>
+      <h3>Email:</h3> <p><%= order.email %></p>
       <br>
 
       <h2>Order Details</h2>
-      <h3>Flavor:</h3> <p><%= submission.flavor %></p>
+      <h3>Flavor:</h3> <p><%= order.flavor %></p>
       <br>
-      <h3>Cone:</h3> <p><%= submission.cone_type %></p>
+      <h3>Cone:</h3> <p><%= order.cone %></p>
       <br>
       <h3>Toppings:</h3>
-      <% if (Array.isArray(submission.toppings) && submission.toppings.length > 0) { %>
-      <% submission.toppings.forEach(topping => { %>
+      <% if (Array.isArray(order.toppings) && order.toppings.length > 0) { %>
+      <% order.toppings.forEach(topping => { %>
         <p class="topping"><%= topping %></p>
       <% }); %>
       <% } else { %>
@@ -39,7 +39,7 @@
       <% } %>
     
       <h2>Additional Comments</h2>
-      <article id="comment"> <%= (submission.comment) ? submission.comment : "None" %></article>
+      <article id="comment"> <%= (order.comment) ? order.comment : "None" %></article>
 
     </div>
     

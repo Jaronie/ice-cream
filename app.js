@@ -1,35 +1,67 @@
-// Import the express module
-
+// Import required modules
 import express from 'express';
+import mysql2 from 'mysql2';
+import dotenv from 'dotenv';
+
+// Define the port number where our server will listen
+const PORT = 3007;
 
 // Create an instance of an Express application
-
 const app = express();
 
 // Serve files from public
-
 app.use(express.static('public'));
 
+// Adding for EJS
+app.use(express.urlencoded({ extended: true }));
+
 // Set view engine to EJS
-
 app.set('view engine', 'ejs');
-
-
-// Define the port number where our server will listen
-
-const PORT = 3007;
 
 // in-memory array
 const form_data = [];
 
-// Adding for EJS
+// Load the environment variables from .env file
+dotenv.config();
 
-app.use(express.urlencoded({ extended: true }));
+// Create a database connection pool with multiple connections
+const pool = mysql2.createPool({
+
+    host: process.env.DB_HOST,
+
+    user: process.env.DB_USER,
+
+    password: process.env.DB_PASSWORD,
+
+    database: process.env.DB_NAME,
+
+    port: process.env.DB_PORT
+
+}).promise();
+
+
+// Database test route (for debugging)
+
+app.get('/db-test', async (req, res) => {
+
+    try {
+
+       const orders = await pool.query('SELECT * FROM orders');
+
+       res.send(orders[0]);
+
+    } catch (err) {
+
+       console.error('Database error:', err);
+
+       res.status(500).send('Database error: ' + err.message);
+
+    }
+
+});
  
 // Define a default "route" ('/')
-
 // req: contains information about the incoming request
-
 // res: allows us to send back a response to the client
 app.get('/', (req, res) => {
 
@@ -37,30 +69,89 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/admin', (req, res) => {
-  res.render('admin', { form_data }); // renders admin page with form_data JSON objects
+// Display all orders
+
+app.get('/admin', async (req, res) => {
+
+  try {
+
+    // Fetch all orders from database, newest first
+    const [orders] = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC');  
+
+    // Render the admin page
+    res.render('admin', { orders });        
+
+  } catch (err) {
+
+      console.error('Database error:', err);
+      res.status(500).send('Error loading orders: ' + err.message);
+
+  }
+
 });
 
-
 app.post('/submit',(req, res) =>{
-  const submission = {
-    name: req.body['order-name'],
-    email: req.body['order-email'],
+  const order = {
+    name: req.body['name'],
+    email: req.body['email'],
     flavor: req.body['flavor'],
-    cone_type: req.body['cone-option'],
+    cone: req.body['cone'],
     toppings: req.body.toppings ? req.body.toppings : "none",
     comment: req.body['comments'],
     timestamp: new Date()
   };
 
-  form_data.push(submission)
-  res.render('confirm', { submission });
+  form_data.push(order);
+  res.render('confirm', { order });
 
 });
 
-// Thank you route
-app.get('/thank-you', (req, res) => {
-    res.render('confirm');
+// Confirmation route - handles form submission
+app.post('/thank-you', async (req, res) => {
+  try {
+
+    // Get form data from req.body
+    const order = req.body;        
+
+    // Log the order data (for debugging)
+    console.log('New order submitted:', order);
+
+    // Convert toppings array to comma-separated string 
+    order.toppings = Array.isArray(order.toppings) ? order.toppings.join(", ") : ""; 
+
+    // SQL INSERT query with placeholders to prevent SQL injection
+    const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings) 
+                  VALUES (?, ?, ?, ?, ?);`;
+
+    // Parameters array must match the order of ? placeholders
+
+    // Make sure your property names match your order names
+
+    const params = [
+
+      order.name,
+      order.email,
+      order.flavor,
+      order.cone,
+      order.toppings
+
+    ];
+
+    // Execute the query and grab the primary key of the new row
+    const result = await pool.execute(sql, params);
+
+    console.log('Order saved with ID:', result[0].insertId);
+
+    // Render confirmation page with the adoption data
+    res.render('confirm', { order });        
+
+  } catch (err) {
+
+    console.error('Error saving order:', err);
+
+    res.status(500).send('Sorry, there was an error processing your order. Please try again.');
+  }
+
 });
 
 

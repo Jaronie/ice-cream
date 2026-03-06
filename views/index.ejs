@@ -25,17 +25,17 @@
 
     <!-- personal information -->
 
-      <form id="order-form" action="/submit" method="post">
+      <form id="order-form" action="/thank-you" method="post">
       <fieldset>
       <legend>Personal Information</legend>
 
         <!-- personal information labels -->
         <label for="name">Name:</label>
         <span id="err-name" class="err">Name required!</span>
-        <input type="text" id="order-name" name="order-name">
+        <input type="text" id="order-name" name="name">
         <span id="err-email" class="err">Email required!</span>
         <label for="email">Email:</label>
-        <input type="text" id="order-email" name="order-email">
+        <input type="text" id="order-email" name="email">
 
     </fieldset>
     <!-- order details -->
@@ -63,11 +63,11 @@
       <label for="cone-type">Choose your cone:</label>
       <div id="cone-options">
       <label>
-        <input type="radio" id="cone-waffle" name="cone-option" value="waffle"> Waffle Cone</label>
+        <input type="radio" id="cone-waffle" name="cone" value="waffle"> Waffle Cone</label>
       <label>
-        <input type="radio" id="cone-sugar" name="cone-option" value="sugar"> Sugar Cone</label>
+        <input type="radio" id="cone-sugar" name="cone" value="sugar"> Sugar Cone</label>
       <label>
-        <input type="radio" id="cone-cup" name="cone-option" value="cup"> Cup</label>
+        <input type="radio" id="cone-cup" name="cone" value="cup"> Cup</label>
         </div>
 
       <!-- topping selection -->

@@ -5,10 +5,10 @@ document.getElementById("order-form").onsubmit = () => {
 
     let isValid = true;
 
-    let name = document.getElementById("order-name").value.trim();
-    let email = document.getElementById("order-email").value.trim();
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
     let flavor = document.getElementById("flavor");
-    let cone = document.getElementsByName("cone-option");
+    let cone = document.getElementsByName("cone");
 
     //Validate first name
 
