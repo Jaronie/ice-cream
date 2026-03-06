@@ -2,12 +2,12 @@
 
 import express from 'express';
 
-
 // Create an instance of an Express application
 
 const app = express();
 
 // Serve files from public
+
 app.use(express.static('public'));
 
 // Set view engine to EJS
